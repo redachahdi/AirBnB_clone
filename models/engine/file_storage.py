@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""to json and the oposite"""
+"""to json and tthe oposite"""
 import json
 import os
 

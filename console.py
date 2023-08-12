@@ -5,7 +5,7 @@ from models import storage
 
 
 class HBNBCommand(cmd.Cmd):
-    """HBNB command"""
+    """HBNB commandd"""
     prompt = "(hbnb) "
 
     def do_create(self, args):

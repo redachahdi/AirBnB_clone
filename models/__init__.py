@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""package file"""
+"""package filee"""
 from models.engine.file_storage import FileStorage
 
 storage = FileStorage()

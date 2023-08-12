@@ -13,7 +13,7 @@ class BaseModel:
     Arttributes:
             id(str): handles unique user identity
             created_at: assigns current datetime
-            updated_at: updates current datetime
+            upddated_at: updates current datetime
 
     Methods:
         __str__: prints the class name, id, and creates dictionary
