@@ -1,15 +1,15 @@
 #!/usr/bin/python3
-# that define the class
+""" that define the class """
 from models.base_model import BaseModel
 
 
 class Place(BaseModel):
-    #city_id and user_id and  The name of the place.
+    """city_id and user_id and  The name of the place.
     #descriptionis  (str).
     #number_rooms and
     #number_bathrooms and max_guest and price_by_night are (int)
     #latitude and longitude are (float)
-    #amenity_ids (list)
+    #amenity_ids (list)"""
 
     city_id = ""
     user_id = ""
