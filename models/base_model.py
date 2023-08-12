@@ -6,6 +6,22 @@ from models import storage
 
 
 class BaseModel:
+    '''
+    Class BaseModel that a Custom base for all the classes in
+    the AirBnb console project:
+
+    Arttributes:
+            id(str): handles unique user identity
+            created_at: assigns current datetime
+            updated_at: updates current datetime
+
+    Methods:
+        __str__: prints the class name, id, and creates dictionary
+                 representations of the input values
+                 [<class name>] (<self.id>) <self.__dict__>
+        save(self): updates instance arttributes with current datetime
+        to_dict(self): returns the dictionary values of the instance obj
+    '''
     def __init__(self, *args, **kwargs):
         self.id = str(uuid.uuid4())
         self.created_at = datetime.now()
