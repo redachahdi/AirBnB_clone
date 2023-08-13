@@ -35,9 +35,9 @@ class BaseModel:
                                                      "%Y-%m-%dT%H:%M:%S.%f")
             kwargs["updated_at"] = datetime.strptime(kwargs["updated_at"],
                                                      "%Y-%m-%dT%H:%M:%S.%f")
-            for key, val in kwargs.items():
-                if "__class__" not in key:
-                    setattr(self, key, val)
+            for _key, _val in kwargs.items():
+                if "__class__" not in _key:
+                    setattr(self, _key, _val)
 
     def __str__(self):
         """
@@ -60,8 +60,8 @@ class BaseModel:
             convert  self dict and other public instance
                 Return: Dictionary
         """
-        dic = dict(self.__dict__)
-        dic['__class__'] = self.__class__.__name__
-        dic['updated_at'] = self.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
-        dic['created_at'] = self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
-        return dic
+        _r_dic = dict(self.__dict__)
+        _r_dic['__class__'] = self.__class__.__name__
+        _r_dic['updated_at'] = self.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
+        _r_dic['created_at'] = self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
+        return _r_dic
