@@ -1,11 +1,16 @@
 #!/usr/bin/python3
-"""difined the user class"""
+"""Defines the User class."""
 from models.base_model import BaseModel
 
 
 class User(BaseModel):
-    """the user represent the different attribute:
-    # the email (str),password (int) fisrt and last name (str)"""
+    """To represent a User.
+    Attributes:
+        email (str): The User email.
+        password (str): The User password.
+        first_name (str): The User first name.
+        last_name (str): The User last name.
+    """
 
     email = ""
     password = ""
