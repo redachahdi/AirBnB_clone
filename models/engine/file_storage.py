@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Defines the FileStorage class."""
+"""Defines the FileStoragee class."""
 import json
 from models.base_model import BaseModel
 from models.user import User
@@ -8,6 +8,7 @@ from models.city import City
 from models.place import Place
 from models.amenity import Amenity
 from models.review import Review
+
 
 class FileStorage:
     """Represents an abstracted storage engine.
@@ -30,7 +31,8 @@ class FileStorage:
         FileStorage._objects[key] = obj
 
     def save(self):
-        """Serializes _objects to the JSON file _file_path."""
+        """Serializes _objects to the JSON
+        file _file_path."""
         object_dict = {key: obj.to_dict() for key, obj in FileStorage._objects.items()}
         with open(FileStorage._file_path, "w") as file:
             json.dump(object_dict, file)
@@ -47,4 +49,3 @@ class FileStorage:
                     self.new(obj_instance)
         except FileNotFoundError:
             return
-
