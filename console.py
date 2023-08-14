@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-"""HBNBCommand module"""
+"""
+This script defines the HBNBCommand class, a command-line interface
+for interacting with objects in the HBNB storage engine.
+"""
 import sys
 import shlex
 import cmd
@@ -13,17 +16,27 @@ from models.amenity import Amenity
 from models.review import Review
 
 
-class HBNBCommand(cmd.Cmd):
-    """class HBNBCommand"""
+def parse(line):
+    """
+    Parse a given string using shlex and return a list of parsed tokens.
+    """
+    return shlex.split(line)
 
+
+class HBNBCommand(cmd.Cmd):
+    """
+    A command-line interface class that allows users to interact
+    with objects in the HBNB storage engine.
+    """
     prompt = '(hbnb) '
     methods = ['all', 'show', 'count', 'update', 'destroy']
     classes = [
         'BaseModel', 'User', 'Place', 'State', 'City', 'Amenity', 'Review']
 
     def precmd(self, line):
-        """Implement custom commands"""
-
+        """
+        Implement custom commands for preprocessing the command line input.
+        """
         if line == '' or not line.endswith(')'):
             return line
 
@@ -55,22 +68,14 @@ class HBNBCommand(cmd.Cmd):
         return ''
 
     def emptyline(self):
-        """Overrides default empty line behavior so no command is executed"""
+        """
+        Override the default behavior of executing a command on an empty line.
+        """
         pass
 
-    def do_quit(self, line):
-        """Quit command to exit the program
-        """
-        return True
-
-    def do_EOF(self, line):
-        """EOF command to exit the program"""
-        print()
-        return True
-
     def do_create(self, line):
-        """Creates a new instance of BaseModel, saves it (to the JSON file)
-        and prints the id
+        """
+        Create a new instance, save it to the JSON file, and print its id.
         """
         args = parse(line)
         if len(args) == 0:
@@ -83,7 +88,9 @@ class HBNBCommand(cmd.Cmd):
             models.storage.save()
 
     def do_show(self, line):
-        """Prints the string representation of an instance"""
+        """
+        Print the string representation of an instance.
+        """
         args = parse(line)
         if len(args) == 0:
             print("** class name missing **")
@@ -101,7 +108,9 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_destroy(self, line):
-        """Deletes an instance based on the class name and id"""
+        """
+        Delete an instance based on the class name and id.
+        """
         args = parse(line)
         if len(args) == 0:
             print("** class name missing **")
@@ -121,7 +130,9 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_all(self, line):
-        """Prints all string representation of all instances based on class"""
+        """
+        Print string representation of all instances based on class.
+        """
         args = parse(line)
         objs = models.storage.all()
         obj_list = []
@@ -139,7 +150,9 @@ class HBNBCommand(cmd.Cmd):
             print(obj_list)
 
     def do_update(self, line):
-        """Updates an instance based on the class name and id and attribute name"""
+        """
+        Update an instance based on class name, id, and attribute name.
+        """
         args = parse(line)
         objs = models.storage.all()
         if len(args) == 0:
@@ -166,10 +179,20 @@ class HBNBCommand(cmd.Cmd):
             except KeyError:
                 print("** no instance found **")
 
+    def do_quit(self, line):
+        """
+        Exit the program using the 'quit' command.
+        """
+        return True
 
-def parse(line):
-    """Parse a given string, and return a list"""
-    return shlex.split(line)
+    def do_EOF(self, line):
+        """
+        Exit the program using the 'EOF' (Ctrl+D) command.
+        """
+        print()
+        return True
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
+
