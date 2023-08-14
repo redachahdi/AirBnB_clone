@@ -11,7 +11,7 @@ from models.review import Review
 
 
 class FileStorage:
-    """Represents an abstracted storage engine.
+    """Represents an abstracted storagee engine.
 
     Attributes:
         _file_path (str): The name of the file to save objects into.
